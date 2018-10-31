@@ -66,7 +66,7 @@ export default {
       // add Worksheet to Workbook
       // Workbook contains one or more worksheets
       XLSX.utils.book_append_sheet(wb, programFramesItemWS, 'program_frames') 
-
+      
       // export Excel file
       XLSX.writeFile(wb, 'program_frames.xlsx') // name of the file is 'book.xlsx'
     }

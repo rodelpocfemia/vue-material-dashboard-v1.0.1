@@ -32,13 +32,13 @@
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/Test">
+      <sidebar-link to="/excelsampleupload">
         <md-icon>dashboard</md-icon>
-        <p>Test</p>
+        <p>Sample Excel Upload</p>
       </sidebar-link>      
       <sidebar-link to="/ExcelSample">
         <md-icon>library_books</md-icon>
-        <p>Excel Sample</p>
+        <p>Excel Sample Download</p>
       </sidebar-link>
       <sidebar-link to="/SampleVuetify">
         <md-icon>library_books</md-icon>

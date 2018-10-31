@@ -15,6 +15,7 @@ import ExcelSample from '@/pages/ExcelSample.vue'
 import ExcelSample2 from '@/pages/ExcelSample2.vue'
 import ExcelSample3 from '@/pages/ExcelSample3.vue'
 import SampleVuetify from '@/pages/SampleVuetify.vue'
+import ExcelSampleUpload from '@/pages/ExcelSampleUpload.vue'
 
 const routes = [  
   {
@@ -85,7 +86,13 @@ const routes = [
         path: 'SampleVuetify',
         name: 'Sample Vuetify',
         component: SampleVuetify
-      }      
+      } 
+      ,
+      {
+        path: 'excelsampleupload',
+        name: 'Sample Excel Upload',
+        component: ExcelSampleUpload
+      }     
     ]
   }
 ]
