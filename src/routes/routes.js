@@ -16,6 +16,7 @@ import ExcelSample2 from '@/pages/ExcelSample2.vue'
 import ExcelSample3 from '@/pages/ExcelSample3.vue'
 import SampleVuetify from '@/pages/SampleVuetify.vue'
 import ExcelSampleUpload from '@/pages/ExcelSampleUpload.vue'
+import ExcelSampleUpload2 from '@/pages/ExcelSampleUpload2.vue'
 
 const routes = [  
   {

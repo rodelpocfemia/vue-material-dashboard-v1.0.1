@@ -1,28 +1,17 @@
-<!-- xlsx.js (C) 2013-present  SheetJS -- http://sheetjs.com -->
 <template>
-<div class="content">
-	<div @drop="_drop" @dragenter="_suppress" @dragover="_suppress">
-		<div class="row"><div class="col-xs-12">
-			<form class="form-inline">
-				<div class="form-group">
-					<upload-btn
-						id="file"
-						title="Upload"
-						color="green"
-						class="white--text" 
-						:fileChangedCallback="_fileChanged"
-						>
-						<template slot="icon">
-							<v-icon right dark>cloud_upload</v-icon>
-						</template>
-					</upload-btn>
-				</div>
-			</form>
-		</div></div>
-		<div class="row"><div class="col-xs-12">
-			<md-button :disabled="data.length ? false : true" class="md-success" @click="_export">Export</md-button>
-		</div></div>
-		<div class="row"><div class="col-xs-12">
+  <div>    
+    <upload-btn
+        title="Upload"
+        color="green"
+        class="white--text"     
+        :accept="SheetJSFT" 
+        @change="_change"  
+        >
+        <template slot="icon">
+           <v-icon right dark>cloud_upload</v-icon>
+        </template>
+    </upload-btn>
+    <div class="row"><div class="col-xs-12">
 			<div class="table-responsive">
 				<table class="table table-striped">
 					<thead><tr>
@@ -36,11 +25,10 @@
 				</table>
 			</div>
 		</div></div>
-	</div>
-</div>
+  </div>
 </template>
-
 <script>
+
 import XLSX from 'xlsx'
 import UploadButton from 'vuetify-upload-button'
 
@@ -71,9 +59,6 @@ export default {
 			loading4: false
 	}; },
 	methods: {
-		_fileChanged (file) {
-			this._file(file);
-		},
 		_suppress(evt) { evt.stopPropagation(); evt.preventDefault(); },
 		_drop(evt) {
 			evt.stopPropagation(); evt.preventDefault();
@@ -104,30 +89,11 @@ export default {
 				const ws = wb.Sheets[wsname];
 				/* Convert array of arrays */
 				const data = XLSX.utils.sheet_to_json(ws, {header:1});
-
 				/* Update state */
 				this.data = data;
 				this.cols = make_cols(ws['!ref']);
-
-				//console.log(JSON.stringify(this.data))
-				this._convertToJson(JSON.stringify(this.data))
-				//console.log(this.data)				
 			};
-			reader.readAsBinaryString(file);		
-				
-		},
-		_convertToJson(data)
-		{
-			//console.log(data);
-			var arr = JSON.parse(data)			
-			var labels = arr[0]
-			
-			var output = arr.slice(1).map(item => item.reduce((obj, val, index) => {
-			obj[labels[index]] = val
-			return obj
-			}, {}))
-			
-			console.log(JSON.stringify(output))
+			reader.readAsBinaryString(file);
 		}
 	},
 	components: {
@@ -136,40 +102,5 @@ export default {
 };
 </script>
 <style>
-  .custom-loader {
-    animation: loader 1s infinite;
-    display: flex;
-  }
-  @-moz-keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  @-webkit-keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  @-o-keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  @keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
+  
 </style>
